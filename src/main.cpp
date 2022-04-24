@@ -11,7 +11,13 @@ int main()
   a.SetStr("Hi! Hoy are you?");
   TStringg b(a);
   TStringg c;
-  c.SetStr("im fine,thenks");
+  TStringg pstr;
+  TStringg b1;
+  TStringg d3;
+  b1.SetStr("123_");
+  c.SetStr("dfgdaskfjgaksdajfkl");
+  pstr.SetStr("a");
+  d3.SetStr("1a23adpg;apwa.t");
   int l = 0;
   l = a.GetLen();
   char* s = new char [256];
@@ -26,15 +32,33 @@ int main()
   r = (a == b);
   bb = (a > b);
   mm = (b < a);
-  
+  int* masVhoj;
   char cc = a[2];
-  cout << b << endl;
-  cin >> b;
-  cout << b << endl;
+  //cout << b << endl;
+  //cin >> b;
+  //cout << b << endl;
+
+  b1.Dubler(5);
+  //cout << b1 << endl;
+
+  int lMas_simvolov = 0;
+  char* mas_simvolov = new char[0]; // для четвертого доп задания
+  int* mas_simvolov_k = new int[0]; // для пятого задания
+  //b1.Posimvolno(4,&mas_simvolov, &mas_simvolov_k, &lMas_simvolov);
+
+  d3.ChastiySimvol();
+
+
+  //c.Vhojdenie(pstr, &masVhoj);
+  //c.SinvolVhojdenie1();
+  // 
+  //c.Razbienie();
+  //cout << c << endl;
+  // 
   //c = a;
   //a.SetLen(25);
   //b.SetLen(10);
-  
+  //delete[] masVhoj;
   delete[] s;
   return 0;
 }

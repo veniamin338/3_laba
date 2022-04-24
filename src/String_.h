@@ -2,7 +2,6 @@
 #include <iostream>
 
 
-
 class TStringg
 {
 public:
@@ -14,7 +13,14 @@ public:
   int GetLen();
   char* GetStr();
 
- int* Vhojdenie(TStringg& p, int kVhojdenie_, int **indexiVhojdenie_);
+ void Vhojdenie(TStringg& p,int** res_);// второе доп задание
+ void SinvolVhojdenie1();
+ TStringg Razbienie();
+ TStringg Dubler(int k);// первое до задание
+ void Posimvolno(int kluch,char** mas, int ** kmas, int* lenm);
+ void Posimvolno(char** mas, int** kmas, int* lenm);//  пятое и четвертое доп задание
+ void ChastiySimvol();//третье доп задание
+
 
   TStringg operator = (TStringg& p);
   TStringg operator + (TStringg& p); 

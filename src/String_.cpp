@@ -1,5 +1,9 @@
 #include "String_.h"
 #include <iostream>
+using std::cout;
+using std::endl;
+using std::cin;
+
 
 TStringg::TStringg(int len_)
 {
@@ -112,13 +116,16 @@ char* TStringg::GetStr()
   return tmp;
 }
 
-int* TStringg::Vhojdenie(TStringg& p, int kVhojdenie_,int **indexiVhojdenie_)
+void TStringg::Vhojdenie(TStringg& p, int** res_)
 {
-  //int kVhojdenie = kVhojdenie_;
-  //int* indexiVhojdenie = indexiVhojdenie_;
+  int kVhojdenie = 0;
+  int* indexiVhojdenie = new int [kVhojdenie];
+  //TStringg p(this->len);
+ // std::cout << "mi ishem:" << std::endl;
+  //std ::cin >> p;
   if (p.len <= len)
   {
-    for (int i = 0; i < len - p.len+1; i++)
+    for (int i = 0; i < (len - p.len + 1); i++)
     {
       bool f = 1;
       if (str[i] == p.str[0])
@@ -129,23 +136,162 @@ int* TStringg::Vhojdenie(TStringg& p, int kVhojdenie_,int **indexiVhojdenie_)
             f = 0;
         }
       }
+      else
+        f = 0;
       if (f)
       {
         kVhojdenie += 1;
         int* tmp = new int[kVhojdenie];
-        for (int l = 0; l < kVhojdenie-1; l++)
+        if (kVhojdenie - 1 == 0)
+          tmp[0] = i;
+        else
         {
-          tmp[l] = indexiVhojdenie[i];
+          for (int l = 0; l < kVhojdenie; l++)
+          {
+            tmp[l] = indexiVhojdenie[l];
+          }
+          tmp[kVhojdenie-1] = i;
         }
-        tmp[kVhojdenie] = i;
+    
         delete[] indexiVhojdenie;
         indexiVhojdenie = tmp;
 
       }
     }
   }
-  return indexiVhojdenie;
+  *res_ = indexiVhojdenie;
+  
 }
+
+void TStringg::SinvolVhojdenie1()
+{
+  std::cout << "mi ishem simvol:   ";
+  char s = ' ';
+  std::cin >> s;
+  bool f = 0;
+  for (int i = 0; i < len; i++)
+  {
+    if (str[i] == s)
+    {
+      std::cout << "simvol = " << s << " stoit na "<< i << " meste" << std::endl;
+      f = 1;
+      break;
+    }
+      
+  }
+  if (f == 0)
+  {
+    std::cout << "simvol = " << s << " v stroke ne naiyden!" << std::endl;
+  }
+}
+
+TStringg TStringg::Razbienie()
+{
+  std::cout << "mi razbivaem po simvoly: ";
+  char s = ' ';
+  std::cin >> s;
+  for (int i = 0; i < len; i++)
+  {
+    if ((*this).str[i] == s)
+    {
+      //int k = 0;
+      str[i] = ' ';
+    }
+  }
+  return *this;
+}
+
+TStringg TStringg::Dubler(int k)
+{
+  TStringg tmp((*this));
+  for (int i = 1; i < k; i++)
+  {
+    (*this) = (*this) + tmp;
+
+  }
+  cout << (*this) << endl;
+  return *this;
+}
+
+void TStringg::Posimvolno(int kluch,char** mas, int** kmas, int*lenm)
+{
+  for(int i = 0; i < len; i++)
+  {
+    bool f = 1;
+    for (int j = 0; j < *lenm; j++)
+    {
+      
+      if (str[i] == (*mas)[j])
+      {
+        (*kmas)[j] += 1;
+        f = 0;
+        break;
+      }
+      
+    }
+    if (f)
+    {
+      *lenm += 1;
+      char* tmp = new char[(*lenm)];
+      int* tmp2 = new int[(*lenm)];
+      for (int l = 0; l < (*lenm) - 1; l++)
+      {
+        tmp[l] = (*mas)[l];
+        tmp2[l] = (*kmas)[l];
+      }
+      tmp[(*lenm) - 1] = str[i];
+      tmp2[(*lenm) - 1] = 1;
+      delete[] (*mas);
+      delete[](*kmas);
+      (*mas) = tmp;
+      (*kmas) = tmp2;
+    }
+  }
+  for (int i = 0; i < (*lenm); i++)
+  {
+    if (kluch == 4)
+    {
+      cout << (*mas)[i] << ", ";
+    }
+    else if(kluch ==5)
+    {
+      cout << (*mas)[i] << " - " << (*kmas)[i] << ", ";
+    }
+    
+  }
+  cout << endl;
+}
+
+void TStringg::Posimvolno(char** mas, int** kmas, int* lenm)
+{
+  char* t1 = &(**mas);
+  int* t2 = &(**kmas);
+  int* t3 = &(*lenm);
+  (*this).Posimvolno(-1, &t1, &t2, t3);
+}
+
+void TStringg::ChastiySimvol()
+{
+  char* t1 = new char[0];
+  int* t2 = new int[0];
+  int t3 = 0;
+  (*this).Posimvolno(0, &t1, &t2, &t3);
+  int maxk = 1;
+  int index_maxk = 0;
+  for (int i = 0; i < t3; i++)
+  {
+   
+    if (t2[i] > maxk)
+    {
+      maxk = t2[i];
+      index_maxk = i;
+
+    }
+      
+  }
+  cout << "chashe vstrechaetsy " << t1[index_maxk] << endl;
+}
+
 
 TStringg TStringg::operator=(TStringg& p)
 {
