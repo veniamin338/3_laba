@@ -13,7 +13,7 @@ public:
   int GetLen();
   char* GetStr();
 
- void Vhojdenie(TStringg& p,int** res_);// второе доп задание
+ void VhojdeniePodSlova(TStringg& p,int** res_);// второе доп задание
  void SinvolVhojdenie1();
  TStringg Razbienie();
  TStringg Dubler(int k);// первое до задание

@@ -32,33 +32,32 @@ int main()
   r = (a == b);
   bb = (a > b);
   mm = (b < a);
-  int* masVhoj;
+  
   char cc = a[2];
-  //cout << b << endl;
-  //cin >> b;
-  //cout << b << endl;
+  cout << b << endl;
+  cin >> b;
+  cout << b << endl;
 
-  b1.Dubler(5);
-  //cout << b1 << endl;
+  b1.Dubler(5);// первое доп задание
+  
 
   int lMas_simvolov = 0;
   char* mas_simvolov = new char[0]; // для четвертого доп задания
   int* mas_simvolov_k = new int[0]; // для пятого задания
-  //b1.Posimvolno(4,&mas_simvolov, &mas_simvolov_k, &lMas_simvolov);
+  b1.Posimvolno(4,&mas_simvolov, &mas_simvolov_k, &lMas_simvolov);// для четвертого доп задания
+  b1.Posimvolno(5, &mas_simvolov, &mas_simvolov_k, &lMas_simvolov);// для пятого задания
 
-  d3.ChastiySimvol();
+  d3.ChastiySimvol();// тертье доп задание
 
-
-  //c.Vhojdenie(pstr, &masVhoj);
-  //c.SinvolVhojdenie1();
-  // 
-  //c.Razbienie();
-  //cout << c << endl;
-  // 
-  //c = a;
-  //a.SetLen(25);
-  //b.SetLen(10);
-  //delete[] masVhoj;
+  int* masVhoj;
+  c.VhojdeniePodSlova(pstr, &masVhoj);// второе доп задание
+  c.SinvolVhojdenie1();
+  
+  c.Razbienie();
+  cout << c << endl;
+  
+  
+  delete[] masVhoj;
   delete[] s;
   return 0;
 }

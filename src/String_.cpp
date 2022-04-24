@@ -116,7 +116,7 @@ char* TStringg::GetStr()
   return tmp;
 }
 
-void TStringg::Vhojdenie(TStringg& p, int** res_)
+void TStringg::VhojdeniePodSlova(TStringg& p, int** res_)
 {
   int kVhojdenie = 0;
   int* indexiVhojdenie = new int [kVhojdenie];
